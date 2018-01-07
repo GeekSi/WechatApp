@@ -1,9 +1,10 @@
 //app.js
 App({
-  onLaunch: function () {
+  onLaunch: function (param) {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
+    console.log(logs);
     wx.setStorageSync('logs', logs)
 
     // 登录
@@ -33,7 +34,15 @@ App({
       }
     })
   },
+  onShow: function(param) {
+    console.log("onShow : " + param.path);
+    console.log("onShow : " + param.referrerInfo);
+  },
+  onHide: function () {
+    console.log("onHide");
+  },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    appName: "蜜月行222"
   }
 })
